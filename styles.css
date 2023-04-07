@@ -1,0 +1,63 @@
+:root {
+    --background-color: #0B2447;
+    --hover-color: #103871;
+    --selected-answer-color: rgb(255, 166, 0);
+    --correct-answer-color: rgb(0, 109, 0);
+    --wrong-answer-color: rgb(180, 0, 0);
+}
+
+
+body {
+    color: aliceblue;
+    background-color: #0B2447;
+}
+
+#timer {
+    position: relative;
+    left: 80%;
+    position: fixed;
+    text-align: center;
+    background-color: inherit;
+}
+
+.timer {
+    background-color: aqua;
+}
+
+input[type="radio"] {
+    visibility: hidden;
+    padding: 3rem;
+}
+
+input[type="radio"]:checked + label > span{
+    background-color: var(--selected-answer-color);
+    color: black;
+}
+
+span:hover {
+    background-color: var(--hover-color);
+}
+
+.radio_button {
+    padding: 1rem;
+    
+}
+
+.correct-answer {
+    background-color: var(--correct-answer-color) !important;
+    color: white !important;
+}
+
+.wrong-answer {
+    background-color: var(--wrong-answer-color) !important;
+    color: white !important;
+}
+
+.correct-unanswered {
+    border: 2px solid var(--correct-answer-color);
+    padding: 0.75rem !important;
+}
+
+.dissabled-mouse {
+    pointer-events: none;
+}

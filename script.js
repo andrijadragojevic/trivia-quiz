@@ -1,3 +1,6 @@
+let secondsLeft = 120;
+var countdown = setInterval(startTimer, 1000);
+
 function fetchData() {
     fetch('https://the-trivia-api.com/api/questions/')
     .then(response => {
@@ -5,6 +8,7 @@ function fetchData() {
     }).then(data => {
         questions = data;
         displayQuestions();
+        startCountdown();
     })
 }
 
@@ -26,12 +30,14 @@ function displayQuestions() {
         questionsHTML += `
             <div class="row">
                 <div class="col">
-                    <h5 class="mb-3 mt-5">${currentQuestion.question}</h5>
+                    <h5 class="mb-4 mt-4">${currentQuestion.question}</h5>
                 </div>
             </div>
             <div class="row">
                 ${answersHTML.join('')}
             </div>
+            <br>
+            <hr>
         `
     });
 
@@ -47,9 +53,9 @@ function getAnswers(question) {
     answers.forEach(answer => {
     
         answersHTML.push(`
-                    <div class="col-12">
+                    <div class="col-12 radio_button">
                         <input type="radio" name="${question.id}" id="${question.id}_${answer}" value="${answer}">
-                        <label for="${question.id}_${answer}">${answer}</label>
+                        <label for="${question.id}_${answer}"><span class="radio_button">${answer}</span></label>
                     </div>
             `)
     });
@@ -79,19 +85,67 @@ function shuffleAnswers(answers) {
 }
 
 function getAnswer(questionID) {
+    let answer = document.querySelector(`input[name="${questionID}"]:checked`)
+    if (answer != null) {
     return document.querySelector(`input[name="${questionID}"]:checked`).value;
+    } else {
+        return null
+    }
 }
 
 function submitAnswers() {
     var points = 0;
-
+    stopCountdown();
     questions.forEach(question => {
+        let checkedSpan = document.querySelector(`label[for="${question.id}_${getAnswer(question.id)}"]>span`);
+        document.querySelector(`label[for="${question.id}_${question.correctAnswer}"]>span`).classList.add("correct-unanswered")
         if(getAnswer(question.id) == question.correctAnswer) {
             points += 1;
+            checkedSpan.classList.add("correct-answer")
+        } else if (checkedSpan != null) {
+            checkedSpan.classList.add("wrong-answer")
         }
+        
     })
+    document.getElementById("submitAnswersButton").classList.add("disabled");
+    document.getElementById("quizWrapper").classList.add("dissabled-mouse");
     alert(points);
 }
+
+/*function startCountdown() {
+    let secondsLeft = 10;
+    function secondLess() {
+        document.getElementById("timer").innerHTML = `<h4>Time left:</h4><h1>${secondsLeft}</h1>`
+        
+        if (secondsLeft < 0) {
+            document.getElementById("timer").innerHTML= "<h4>Time out!</h4>"
+            stopCountdown()
+            submitAnswers();            
+        }
+        secondsLeft -= 1;
+        
+    }
+    var countdown = setInterval(secondLess, 1000);
+}*/
+
+
+    function startTimer() {
+        document.getElementById("timer").innerHTML = `<h4>Time left:</h4><h1>${secondsLeft}</h1>`
+        if (secondsLeft < 0) {
+            document.getElementById("timer").innerHTML= "<h4>Time out!</h4>"
+            stopCountdown()
+            submitAnswers();            
+        }
+        secondsLeft -= 1;
+    }
+
+function stopCountdown() {
+    clearInterval(countdown);
+    document.getElementById("timer").innerHTML= "<h4>Done!</h4>"
+}
+
+
+
 
 
 //displayQuestions(); 
