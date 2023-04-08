@@ -1,12 +1,15 @@
 let secondsLeft = 120;
-var countdown = setInterval(startTimer, 1000);
+var countdown = setInterval(startCountdown, 1000);
 
 function fetchData() {
-    fetch('https://the-trivia-api.com/api/questions/')
+    fetch('https://the-trivia-api.com/api/questions?categories=film_and_tv&limit=20&difficulty=hard')
     .then(response => {
         return response.json();
     }).then(data => {
-        questions = data;
+        questionString = JSON.stringify(data);
+        //questionsString.replace('"',"'");
+        console.log(data);
+        questions = JSON.parse(questionString);
         displayQuestions();
         startCountdown();
     })
@@ -14,7 +17,7 @@ function fetchData() {
 
 //const questionsString
 //const questions = JSON.parse(questionsString);
-
+var questionsString;
 var questions;
 fetchData();
 
@@ -30,7 +33,7 @@ function displayQuestions() {
         questionsHTML += `
             <div class="row">
                 <div class="col">
-                    <h5 class="mb-4 mt-4">${currentQuestion.question}</h5>
+                    <h5 class="mb-4 mt-4">${currentQuestion.question.replace('"',"'")}</h5>
                 </div>
             </div>
             <div class="row">
@@ -47,15 +50,20 @@ function displayQuestions() {
 
 function getAnswers(question) {
     let answers = question.incorrectAnswers;
-    answers.push(question.correctAnswer);
+    answers.push(question.correctAnswer)
     let answersHTML = [];
 
+    let idCounter = 0;
+
     answers.forEach(answer => {
+
+        let answerText = answer;
+        answer = answer.replace(/['"]+/g, '');
     
         answersHTML.push(`
                     <div class="col-12 radio_button">
                         <input type="radio" name="${question.id}" id="${question.id}_${answer}" value="${answer}">
-                        <label for="${question.id}_${answer}"><span class="radio_button">${answer}</span></label>
+                        <label for="${question.id}_${answer}"><span class="radio_button">${answerText}</span></label>
                     </div>
             `)
     });
@@ -70,7 +78,7 @@ function shuffleAnswers(answers) {
         answersShuffled.push('');     
     })
 
-    let index = Math.floor(Math.random()*4);
+    let index = Math.floor(Math.random() * answersShuffled.length);
     let indexNetacnog = 0;
 
     for (let i=0; i < answers.length; i++) {
@@ -96,10 +104,15 @@ function getAnswer(questionID) {
 function submitAnswers() {
     var points = 0;
     stopCountdown();
+     
     questions.forEach(question => {
-        let checkedSpan = document.querySelector(`label[for="${question.id}_${getAnswer(question.id)}"]>span`);
-        document.querySelector(`label[for="${question.id}_${question.correctAnswer}"]>span`).classList.add("correct-unanswered")
-        if(getAnswer(question.id) == question.correctAnswer) {
+        let answer_ = getAnswer(question.id);
+        if (answer_ != null) {
+            answer_ = answer_.replace(/['"]+/g, '');
+        }
+        let checkedSpan = document.querySelector(`label[for="${question.id}_${answer_}"]>span`);
+        document.querySelector(`label[for="${question.id}_${question.correctAnswer.replace(/['"]+/g, '')}"]>span`).classList.add("correct-unanswered")
+        if(answer_ == question.correctAnswer.replace(/['"]+/g, '')) {
             points += 1;
             checkedSpan.classList.add("correct-answer")
         } else if (checkedSpan != null) {
@@ -129,7 +142,7 @@ function submitAnswers() {
 }*/
 
 
-    function startTimer() {
+    function startCountdown() {
         document.getElementById("timer").innerHTML = `<h4>Time left:</h4><h1>${secondsLeft}</h1>`
         if (secondsLeft < 0) {
             document.getElementById("timer").innerHTML= "<h4>Time out!</h4>"

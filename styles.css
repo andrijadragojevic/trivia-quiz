@@ -1,5 +1,5 @@
 :root {
-    --background-color: #0B2447;
+    --background-color: #081931;
     --hover-color: #103871;
     --selected-answer-color: rgb(255, 166, 0);
     --correct-answer-color: rgb(0, 109, 0);
@@ -9,7 +9,7 @@
 
 body {
     color: aliceblue;
-    background-color: #0B2447;
+    background-color: var(--background-color);
 }
 
 #timer {
