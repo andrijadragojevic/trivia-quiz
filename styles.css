@@ -26,7 +26,10 @@ body {
 
 input[type="radio"] {
     visibility: hidden;
-    padding: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-left: 3%;
+    
 }
 
 input[type="radio"]:checked + label > span{
@@ -39,8 +42,7 @@ span:hover {
 }
 
 .radio_button {
-    padding: 1rem;
-    
+    padding: 1rem;  
 }
 
 .correct-answer {
@@ -60,4 +62,10 @@ span:hover {
 
 .dissabled-mouse {
     pointer-events: none;
+}
+
+span {
+    display: inline-block;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }

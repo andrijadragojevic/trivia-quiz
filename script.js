@@ -67,7 +67,7 @@ function getAnswers(question) {
         answer = answer.replace(/['"]+/g, '');
     
         answersHTML.push(`
-                    <div class="col-12 radio_button">
+                    <div class="col-12 radio_button p-0">
                         <input type="radio" name="${question.id}" id="${question.id}_${answer}" value="${answer}">
                         <label for="${question.id}_${answer}"><span class="radio_button">${answerText}</span></label>
                     </div>
