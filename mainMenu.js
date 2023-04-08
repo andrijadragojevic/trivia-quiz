@@ -34,7 +34,7 @@ location.href = "quiz.html";
 
 }
 
-function updateNumberOfQuestions(){
-    document.querySelector(`label[for="numberOfQuestions"]>h1`).innerHTML = `${document.getElementById("numberOfQuestions").value}`
-}
+document.getElementById("numberOfQuestions").addEventListener( "input", (event) => {
+    document.querySelector(`label[for="numberOfQuestions"]>h1`).innerHTML = document.getElementById("numberOfQuestions").value;
+})
 
