@@ -3,8 +3,9 @@ var countdown = setInterval(startCountdown, 1000);
 
 
 let selectedCategories = JSON.parse(sessionStorage.getItem("selectedCategories"));
+let numberOfQuestions = sessionStorage.getItem("numberOfQuestions");
 
-let api_url = `https://the-trivia-api.com/api/questions?${selectedCategories}limit=10`
+let api_url = `https://the-trivia-api.com/api/questions?${selectedCategories}limit=${numberOfQuestions}`
 
 function fetchData() {
     fetch(api_url)

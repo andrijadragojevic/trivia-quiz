@@ -1,3 +1,9 @@
+
+document.getElementById("numberOfQuestions").value = sessionStorage.getItem("numberOfQuestions") ?? 10;
+document.querySelector(`label[for="numberOfQuestions"]>h1`).innerHTML = `${sessionStorage.getItem("numberOfQuestions") ?? '10'}`;
+
+
+
 function start() {
 
 let categories = ["arts_and_literature","film_and_tv","food_and_drink","general_knowledge","geography","history","music","science",
@@ -22,7 +28,13 @@ if (selectedCategories.length > 0) {
 }
 
 sessionStorage.setItem("selectedCategories",JSON.stringify(selectedCategories))
+sessionStorage.setItem("numberOfQuestions",`${document.getElementById("numberOfQuestions").value}`)
 
 location.href = "quiz.html";
 
 }
+
+function updateNumberOfQuestions(){
+    document.querySelector(`label[for="numberOfQuestions"]>h1`).innerHTML = `${document.getElementById("numberOfQuestions").value}`
+}
+
