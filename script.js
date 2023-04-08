@@ -1,8 +1,13 @@
 let secondsLeft = 120;
 var countdown = setInterval(startCountdown, 1000);
 
+
+let selectedCategories = JSON.parse(sessionStorage.getItem("selectedCategories"));
+
+let api_url = `https://the-trivia-api.com/api/questions?${selectedCategories}limit=10`
+
 function fetchData() {
-    fetch('https://the-trivia-api.com/api/questions?categories=film_and_tv&limit=20&difficulty=hard')
+    fetch(api_url)
     .then(response => {
         return response.json();
     }).then(data => {
