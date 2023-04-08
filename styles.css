@@ -4,6 +4,7 @@
     --selected-answer-color: rgb(255, 166, 0);
     --correct-answer-color: rgb(0, 109, 0);
     --wrong-answer-color: rgb(180, 0, 0);
+    --timer-background-color: rgb(102, 0, 0);
 }
 
 
@@ -14,14 +15,14 @@ body {
 
 #timer {
     position: relative;
-    left: 80%;
+    right: 1%;
+    top: 1%;
     position: fixed;
     text-align: center;
-    background-color: inherit;
-}
-
-.timer {
-    background-color: aqua;
+    background-color: var(--timer-background-color);
+    border-radius: 2rem;
+    padding: 0.8rem 0.1rem;
+    width: 5.5rem;
 }
 
 input[type="radio"] {

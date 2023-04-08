@@ -149,7 +149,7 @@ function submitAnswers() {
 
 
     function startCountdown() {
-        document.getElementById("timer").innerHTML = `<h4>Time left:</h4><h1>${secondsLeft}</h1>`
+        document.getElementById("timer").innerHTML = `<h4>Time:</h4><h1>${secondsLeft}</h1>`
         if (secondsLeft < 0) {
             document.getElementById("timer").innerHTML= "<h4>Time out!</h4>"
             stopCountdown()
