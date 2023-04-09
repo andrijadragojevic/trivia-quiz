@@ -5,6 +5,7 @@
     --correct-answer-color: rgb(0, 109, 0);
     --wrong-answer-color: rgb(180, 0, 0);
     --timer-background-color: rgb(102, 0, 0);
+    --correct-unanswered-color: green;
 }
 
 
@@ -57,8 +58,9 @@ span:hover {
 }
 
 .correct-unanswered {
-    border: 2px solid var(--correct-answer-color);
-    padding: 0.75rem !important;
+    /*border: 0.5rem solid var(--correct-unanswered-color);*/
+    box-shadow: inset 0px 0px 0px 5px var(--correct-unanswered-color);
+    margin: 2px 0px;
 }
 
 .dissabled-mouse {

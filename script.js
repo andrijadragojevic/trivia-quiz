@@ -117,12 +117,15 @@ function submitAnswers() {
             answer_ = answer_.replace(/['"]+/g, '');
         }
         let checkedSpan = document.querySelector(`label[for="${question.id}_${answer_}"]>span`);
-        document.querySelector(`label[for="${question.id}_${question.correctAnswer.replace(/['"]+/g, '')}"]>span`).classList.add("correct-unanswered")
+        //document.querySelector(`label[for="${question.id}_${question.correctAnswer.replace(/['"]+/g, '')}"]>span`).classList.add("correct-unanswered")
         if(answer_ == question.correctAnswer.replace(/['"]+/g, '')) {
             points += 1;
-            checkedSpan.classList.add("correct-answer")
+            checkedSpan.classList.add("correct-answer");
         } else if (checkedSpan != null) {
-            checkedSpan.classList.add("wrong-answer")
+            checkedSpan.classList.add("wrong-answer");
+            document.querySelector(`label[for="${question.id}_${question.correctAnswer.replace(/['"]+/g, '')}"]>span`).classList.add("correct-unanswered");
+        } else {
+            document.querySelector(`label[for="${question.id}_${question.correctAnswer.replace(/['"]+/g, '')}"]>span`).classList.add("correct-unanswered");
         }
         
     })

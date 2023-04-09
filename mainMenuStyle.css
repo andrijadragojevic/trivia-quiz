@@ -1,9 +1,9 @@
 :root {
     --background-color: #081931;
     --hover-color: #103871;
-    --selected-answer-color: rgb(255, 166, 0);
-    --correct-answer-color: rgb(0, 109, 0);
+    --selected-category-color: green;
     --wrong-answer-color: rgb(180, 0, 0);
+    --section-header: orange;
 }
 
 
@@ -24,8 +24,7 @@ input[type="checkbox"] + label:hover {
 }
 
 input[type="checkbox"]:checked + label {
-    background-color: var(--selected-answer-color);
-    color: black;
+    background-color: var(--selected-category-color);
 }
 
 
@@ -40,7 +39,7 @@ input[type="checkbox"] {
 }
 
 .category-heading {
-    background-color: var(--selected-answer-color);
+    background-color: var(--section-header);
     width: 100%;
     padding: 1rem 1rem;
     color: black;
