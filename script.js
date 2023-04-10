@@ -132,7 +132,7 @@ function submitAnswers() {
     })
     document.getElementById("submitAnswersButton").classList.add("disabled");
     document.getElementById("quizWrapper").classList.add("dissabled-mouse");
-    alert(points);
+    document.querySelector(".modal-body").innerHTML = `<h3>You have <u>${points} / ${numberOfQuestions}</u> correct answers!</h3>`;
 }
 
 /*function startCountdown() {
