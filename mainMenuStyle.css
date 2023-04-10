@@ -4,6 +4,9 @@
     --selected-category-color: green;
     --wrong-answer-color: rgb(180, 0, 0);
     --section-header: orange;
+    --difficulty-easy-label: green;
+    --difficulty-medium-label: rgb(228, 228, 0);
+    --difficulty-hard-label: rgb(180, 0, 0);
 }
 
 
@@ -32,6 +35,27 @@ input[type="checkbox"] {
     visibility: hidden;
 }
 
+input[type="radio"] + label:hover {
+    background-color: var(--hover-color);
+}
+
+input[type="radio"]:checked + label[for="easy"] {
+    background-color: var(--selected-category-color);
+}
+
+input[type="radio"]:checked + label[for="medium"] {
+    background-color: var(--difficulty-medium-label);
+    color:black
+}
+
+input[type="radio"]:checked + label[for="hard"] {
+    background-color: var(--difficulty-hard-label);
+}
+
+input[type="radio"] {
+    visibility: hidden;
+}
+
 .category-container {
     background-color: #0d284e;
     padding-bottom: 2rem;
@@ -45,4 +69,8 @@ input[type="checkbox"] {
     color: black;
     width: 40%;
     margin: auto;
+}
+
+.difficulty-radiogroup > label {
+    width: 90%;
 }

@@ -32,9 +32,17 @@ sessionStorage.setItem("numberOfQuestions",`${document.getElementById("numberOfQ
 
 location.href = "quiz.html";
 
+if (document.querySelector("input[type='radio']:checked") != null) {
+
+    sessionStorage.setItem("difficulty", `&difficulty=${document.querySelector("input[type='radio']:checked").value}`);
+    
+} else {
+    sessionStorage.setItem("difficulty", '');
+}
+
+
 }
 
 document.getElementById("numberOfQuestions").addEventListener( "input", (event) => {
     document.querySelector(`label[for="numberOfQuestions"]>h1`).innerHTML = document.getElementById("numberOfQuestions").value;
 })
-
