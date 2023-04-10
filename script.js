@@ -60,8 +60,6 @@ function getAnswers(question) {
     answers.push(question.correctAnswer)
     let answersHTML = [];
 
-    let idCounter = 0;
-
     answers.forEach(answer => {
 
         let answerText = answer;

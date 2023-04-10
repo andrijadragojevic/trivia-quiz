@@ -44,7 +44,7 @@ span:hover {
 }
 
 .radio_button {
-    padding: 1rem;  
+    padding: 1.5rem;
 }
 
 .correct-answer {
@@ -60,20 +60,24 @@ span:hover {
 .correct-unanswered {
     /*border: 0.5rem solid var(--correct-unanswered-color);*/
     box-shadow: inset 0px 0px 0px 5px var(--correct-unanswered-color);
-    margin: 2px 0px;
 }
 
 .dissabled-mouse {
-    pointer-events: none;
-}
-
-span {
-    display: inline-block;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    pointer-events: inherit;
 }
 
 .modal-dialog {
     color: black;
     margin-top: 10%;
+}
+
+span {
+    display: inline-block;
+    width: 99%;
+    height: 100%;
+}
+
+label {
+    width: 90%;
+    height: 100%;
 }
