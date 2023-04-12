@@ -74,3 +74,11 @@ input[type="radio"] {
 .difficulty-radiogroup > label {
     width: 90%;
 }
+
+.category-container {
+    font-size:xx-large
+}
+
+h1 {
+    font-size: 50px;
+}
