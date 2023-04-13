@@ -67,7 +67,7 @@ input[type="radio"] {
     width: 100%;
     padding: 1rem 1rem;
     color: black;
-    width: 40%;
+    width: 12rem;
     margin: auto;
 }
 
@@ -81,4 +81,24 @@ input[type="radio"] {
 
 h1 {
     font-size: 50px;
+}
+
+/* Background gradient animation*/
+body {
+	background: linear-gradient(-45deg, #193764, #590e2b, #044259, #61007e);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
